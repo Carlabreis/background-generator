@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import Select from 'react-select';
+
+const options = [
+  { value: 'nature', label: 'Nature' },
+  { value: 'city', label: 'City' },
+  { value: 'technology', label: 'Technology' },
+  { value: 'food', label: 'Food' },
+  { value: 'still_life', label: 'Still Life' },
+  { value: 'abstract', label: 'Abstract' },
+  { value: 'wildlife', label: 'Wildlife' }
+]
+
 
 function App() {
+  const [selectedOption, setSelectedOption] = useState(null);
+    const handleChange = selectedOption => {
+        setSelectedOption(selectedOption);
+        console.log(selectedOption.value);
+      }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Background Generator</h1>
+      <Select options={options} value={selectedOption} className="select" onChange={handleChange} />
+      <img src="" alt=""></img>
     </div>
   );
 }
